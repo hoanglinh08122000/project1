@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="jquery.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="xuly.js"></script>
+    <link rel="stylesheet"  href="layout.css">
+    <!-- <script type="text/javascript">
+      var socket = io("http://localhost:3000");
+        socket.on("Sever-send-data",function(data){
+          $("#noidung").append(data + ", ");
+        });
+      $(document).ready(function(){
+       $('#idsocket').click(function(){
+          socket.emit("Client-send-data","hello");
+       });
+     });
+    </script> -->
+  </head>
+  <body>
+  <div class="wapper">
+    <div id="Loginfrom">
+      <div class="">
+        <h2>What your name</h2>
+      </div>
+
+        User <input type="text" id="txtUser" value="">
+        <button type="submit" name="button" id="btnRegister">up</button>
+
+    </div>
+    <div id="Chatfrom">
+      <div class="left">
+        <div class="boxUser">
+          <div class="" style="text-align:center">
+          UserLogin
+          </div>
+          <div id="boxUserLogin">
+
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="Username" id="sayHi" style="text-align:right">
+            <span id="UserLogin">
+
+
+            </span>
+              <input type="submit" name="logout" id="logout" value="logout">
+        </div>
+        <div id="Boxchat">
+
+        </div>
+        <div class="Boxwrite">
+              <div id="thongbao">
+
+              </div>
+              <input type="text"  id="writechat" />
+              <input type="button" name="" id="inputwrite"  value="send">
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+body{
+  background-color: #aee8ca;
+}
+.wapper{
+  width: 100%;
+  height: 500px;
+}
+.left{
+  float: left;
+  width: 30%;
+  height: 100%;
+  background-color: #89b04d;
+}
+.right{
+  float: right;
+  width: 70%;
+  height: 100%;
+  background-color: white;
+}
+.Username{
+  float:left;
+  width: 100%;
+  height: 10%;
+  background-color: #d6e3c3;
+}
+.Boxchat{
+  width: 100%;
+  float:left;
+  height: 200px;
+}
+.Boxwrite{
+  width: 100%;
+    float:left;
+  height: 10%;
+  background-color: #d6e3c3;
+}

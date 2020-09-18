@@ -11,27 +11,57 @@ app.set("views" , "./views");// link đường dẫn đến thư mục
 
 server.listen(3000);
 
-io.on("connect", function (socket) {
+
+var arrayUser=[];
+
+io.on("connection", function (socket) {
   console.log("co connect ma id = " + socket.id);
 
- socket.on("disconnect",function () {
-   console.log(socket.id+ "da ngat ket noi");
- });
-
- socket.on("Client-send-data", function(data){
-   console.log(socket.id + " vua gui " + data);
-   // io.sockets.emit("Sever-send-data", data + "888"); gui cho nhieu nguoi ca minh
-   // socket.emit("Sever-send-data", data + "888");
-   socket.broadcast.emit("Sever-send-data", data + "888");
- });
+  socket.on("user-send-data",function (data) {
+    if (arrayUser.indexOf(data)>=0) {
+      socket.emit("server-send-fail");
+    }else {
+      arrayUser.push(data);// chen them user vao mang
+      socket.emit("server-send-thanhcong", data);
+      socket.Username=data;
+      io.sockets.emit("server-send-full-data", arrayUser);
+    }
+  });
+  socket.on("logout",function () {
+    arrayUser.splice(
+      arrayUser.indexOf(socket.Username),1
+    );
+    socket.broadcast.emit("server-send-full-data", arrayUser);
+  });
+  socket.on("user-send-meg",function (data) {
+    io.sockets.emit("sever-send-all-meg",{name:socket.Username, meg:data})
+  });
+  socket.on("dang-go",function () {
+  var writing = socket.Username + "dang go";
+  io.sockets.emit("dang-go-chu", writing);
+  });
+  socket.on("ngung-go",function () {
+      io.sockets.emit("ngung-go-chu");
+  });
 });
 
-app.get('/socket',function (req,res) {
-  res.render("socket");
+app.get('/trangchu',function (req,res) {
+  res.render("trangchu");
 })
 
 
+// socket.on("disconnect",function () {
+//   console.log(socket.id+ "da ngat ket noi");
+// });
+//
+// socket.on("Client-send-data", function(data){
+//   console.log(socket.id + " vua gui " + data);
+//   // io.sockets.emit("Sever-send-data", data + "888"); gui cho nhieu nguoi ca minh
+//   // socket.emit("Sever-send-data", data + "888");
+//   socket.broadcast.emit("Sever-send-data", data + "888");
+// });
 
+//
 
 
 // app.get("/hello", function (req, res){
