@@ -1,0 +1,30 @@
+<%
+ var n = 100;
+  // var n= "Linh";
+
+ %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>
+        Linh
+    </h1>
+    <% if (n>200){ %>
+        <h1> lon hon 200</h1>
+    <% } else { %>
+        <h1>nho hon 200</h1>
+    <% }%>
+
+    <% for (var i=1;i<5;i++){%>
+        <p>
+            linh
+            <%=i%>
+        </p>
+    <%}%>
+</body>
+</html>
